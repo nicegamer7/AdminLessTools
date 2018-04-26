@@ -27,7 +27,7 @@ set condition=nas
 
 net use %_drv% "%_bdir%"
 set _fdir=%_drv%
-z:
+%_drv%
 
 :process
 for /r %%f in (*.ttf *.ttc *.otf) do %_fdir%\RegisterFont.exe add "%%f"
@@ -35,3 +35,5 @@ for /r %%f in (*.ttf *.ttc *.otf) do %_fdir%\RegisterFont.exe add "%%f"
 :exit
 echo Well that was fun, we're done now, thanks.
 pause
+
+if defined condition net use %_drv% /delete /y
